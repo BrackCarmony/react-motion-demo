@@ -31,16 +31,26 @@
   to { transform: rotate(360deg); }
 }
 
-.todo{
-  background-color: mintcream;
-  border: 1px solid #333;
-  width:300px;
-  padding:25px;
-  overflow:hidden;
-}
-
 .List{
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.motionItem{
+  background-color: #efefef;
+  outline: 1px solid #333;
+  overflow:hidden;
+  width:600px;
+  position:relative;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete{
+  position: absolute;
+  top:10px;
+  right:10px;
+  color:red;
 }
