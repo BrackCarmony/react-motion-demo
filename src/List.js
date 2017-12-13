@@ -43,8 +43,9 @@ class List extends Component{
       <div className="List">
         {this.state.todos.map((e)=>{
         return (
-            <div key={e.id} className="motionItem" style={e.style} >
-              {e.todo} <span className="delete" onClick={()=>this.remove(e)}>X</span>
+            <div key={e.id} className="motionItem">
+              {e.todo}
+              <span className="delete" onClick={()=>this.remove(e)}>X</span>
             </div>
           )
         })}
