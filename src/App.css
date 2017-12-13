@@ -38,7 +38,7 @@
 }
 
 .motionItem{
-  background-color: #efefef;
+  background-color: mintcream;
   outline: 1px solid #333;
   overflow:hidden;
   width:600px;
@@ -46,11 +46,12 @@
   display:flex;
   align-items: center;
   justify-content: center;
+  height:50px;
 }
 
 .delete{
   position: absolute;
   top:10px;
   right:10px;
-  color:red;
+  color:tomato;
 }
