@@ -57,9 +57,13 @@ class List extends Component{
     return (
       <div>
         <h1>My things to do</h1>
-        {this.listAll()}
         <input type="text" onChange={ input => this.textChange(input.target.value) } value={this.state.newTodo}/>
         <button onClick={()=>this.add()}> New Todo</button>
+        <div className="List">
+          {this.listAll()}
+        </div>
+
+
       </div>
     )
   }
