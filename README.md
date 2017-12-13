@@ -2,11 +2,21 @@
 
 Demo for working with the TransitionMotion component from react-motion.  TransitionMotion lets us create a list that will animate when we add or remove items from the array.  
 
+We are starting with a simple TODO app in react.  We can create and remove todo items from our list.  We can start the dev server by running `npm start`
+
+
 ## install react-motion
 
 To instll react-motion into our project we can use npm.
 
-'npm install react-motion'
+`npm install react-motion`
+
+Inside of any component where we want to use the TransitionMotion component, it will need to make sure that we import it, along with the helper spring function.
+
+```js
+import React, { Componnet } from 'react';
+import { TransitionMotion, spring} from 'react-motion';
+```
 
 ## 4 pieces of information
 
