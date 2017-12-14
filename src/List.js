@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TransitionMotion, spring, presets } from 'react-motion'
 
 class List extends Component{
   constructor(props){
@@ -38,18 +39,59 @@ class List extends Component{
     this.setState({todos:this.state.todos.filter(e=>e!==todo)})
   }
 
+  getDefaultStyles(){
+    return this.state.todos.map((todo)=>{
+      return {
+        style:{height:0, opacity:0},
+        data:todo,
+        key:todo.id+'key'
+      }
+    })
+  }
+
+  getStyles(){
+    return this.state.todos.map((todo)=>{
+      return {
+        style:{height:spring(100, {stiffness:100, dampening:50}), opacity:spring(1)},
+        data:todo,
+        key:todo.id+'key'
+      }
+    })
+  }
+
+  willEnter(){
+    return {height:0, opacity:0}
+  }
+
+  willLeave(){
+    return {height:spring(0), opacity:spring(0)}
+  }
+
+
   listAll(){
     return (
-      <div className="List">
-        {this.state.todos.map((e)=>{
-        return (
-            <div key={e.id} className="motionItem">
-              {e.todo}
-              <span className="delete" onClick={()=>this.remove(e)}>X</span>
+      <TransitionMotion
+        defaultStyles={this.getDefaultStyles()}
+        styles={this.getStyles()}
+        willEnter={this.willEnter}
+        willLeave={this.willLeave}
+        >
+        {
+          currentStyles => (
+            <div className="List">
+              {currentStyles.map((e)=>{
+              return (
+                  <div key={e.key} style={e.style} className="motionItem">
+                    {e.data.todo}
+                    <span className="delete" onClick={()=>this.remove(e.data)}>X</span>
+                  </div>
+                )
+              })}
             </div>
           )
-        })}
-      </div>
+        }
+
+      </TransitionMotion>
     )
   }
 
